@@ -50,7 +50,6 @@ body {
     display: flex;
     justify-content: flex-start;
 
-
 }
 
 .section__list {
@@ -153,7 +152,7 @@ body {
         width: 100%;
 
     }
-    
+
     .container {
         margin: 10%;
     }
