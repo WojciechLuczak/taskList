@@ -11,19 +11,19 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     background-color: rgb(236, 236, 236);
+    margin: none;
 }
 
 .container {
 
-    margin-top: 40px;
-    max-width: 1200px;
-    margin: 100px;
+    margin-top: 40px;   
+    margin-left: 1%;
+    margin-right: 1%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 
 }
 
@@ -32,30 +32,19 @@ body {
     min-width: 300px;
 }
 
-.addNewTask {
+.section {
     width: 80%;
     min-width: 300px;
 }
 
-.taskList {
-    width: 80%;
-    min-width: 300px;
-}
-
-.addNewTask__title {
+.section__title {
     padding: 20px;
     margin-bottom: 2px;
     background-color: white;
 
 }
 
-.taskList__title {
-    padding: 20px;
-    margin-bottom: 2px;
-    background-color: white;
-}
-
-.addNewTask__form {
+.section__form {
     padding: 20px;
     background-color: white;
     display: flex;
@@ -64,30 +53,32 @@ body {
 
 }
 
-.taskList__list {
+.section__list {
     padding: 20px;
     background-color: white;
     margin-top: 0;
     list-style: none;
 }
 
-.addNewTask__input {
+.section__input {
     margin-right: 10px;
     flex: 1;
     border: 1px solid #ccc;
     padding: 5px;
+    height: 40px;
 }
 
-.addNewTask__button {
+.section__button {
     max-width: 150px;
     min-width: 113px;
     height: 30px;
     background-color: teal;
     color: white;
     border: none;
+    height: 40px;
 }
 
-.taskList__taskRow {
+.section__taskRow {
     display: flex;
     justify-content: space-between;
     padding: 8px;
@@ -96,52 +87,54 @@ body {
 
 }
 
-.taskList__iconCheck {
-    max-width: 20px;
+.section__iconCheck {
+    max-width: 30px;
 }
 
-.taskList__iconRemove {
-    max-width: 20px;
+.section__iconRemove {
+    max-width: 30px;
 }
 
-.taskList__done {
+.section__done {
     border: none;
     background-color: white;
 }
 
-.taskList__remove {
+.section__remove {
     border: none;
     background-color: white;
 }
 
-.taskList__individualTask {
+.section__individualTask {
     cursor: default;
 
 }
 
-.taskList__taskRowLeft {
+.section__taskRowLeft {
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-.taskList__taskRowRight {
+.section__taskRowRight {
     display: flex;
     align-items: center;
 }
 
+
 @media screen and (max-width: 650px) {
-    .addNewTask__form {
+    .section__form {
         flex-direction: column;
     }
 
-    .addNewTask__input {
+    .section__input {
         margin-bottom: 10px;
         max-width: 100%;
         margin-right: 0px;
+        height: 40px;
     }
 
-    .addNewTask__button {
+    .section__button {
         max-width: 100%;
     }
 
@@ -156,16 +149,11 @@ body {
         margin: 1px;
     }
 
-    .addNewTask {
+    .section {
         width: 100%;
 
     }
-
-    .taskList {
-        width: 100%;
-
-    }
-
+    
     .container {
         margin: 10%;
     }
