@@ -63,6 +63,7 @@ body {
     border: 1px solid #ccc;
     padding: 5px;
     height: 40px;
+    
 }
 
 .section__button {
@@ -78,7 +79,7 @@ body {
 .section__taskRow {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    
+    align-items: center;
     padding: 8px;
     border-bottom: 2px solid #e9e7e7;
 }
