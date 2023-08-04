@@ -41,7 +41,6 @@ body {
     padding: 20px;
     margin-bottom: 2px;
     background-color: white;
-
 }
 
 .section__form {
@@ -49,7 +48,6 @@ body {
     background-color: white;
     display: flex;
     justify-content: flex-start;
-
 }
 
 .section__list {
@@ -78,12 +76,11 @@ body {
 }
 
 .section__taskRow {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    
     padding: 8px;
     border-bottom: 2px solid #e9e7e7;
-    align-items: center;
-
 }
 
 .section__iconCheck {
@@ -106,20 +103,7 @@ body {
 
 .section__individualTask {
     cursor: default;
-
 }
-
-.section__taskRowLeft {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.section__taskRowRight {
-    display: flex;
-    align-items: center;
-}
-
 
 @media screen and (max-width: 650px) {
     .section__form {
@@ -131,6 +115,7 @@ body {
         max-width: 100%;
         margin-right: 0px;
         height: 40px;
+        flex-basis: 40px;
     }
 
     .section__button {
@@ -150,7 +135,6 @@ body {
 
     .section {
         width: 100%;
-
     }
 
     .container {

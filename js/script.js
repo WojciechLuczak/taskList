@@ -42,19 +42,15 @@
         for (const task of tasks) {
             htmlString += `
             <li class="section__taskRow" ${task.done ? " style=\"text-decoration: line-through\"" : ""} >
-                <div class="section__taskRowLeft">
+                
                     <button class="js-done section__done">
                         <img class="section__iconCheck" src="${task.done ? 'img/checked.png' : 'img/unchecked.png'}" alt="Done Icon">
                     </button>
-                
                     <span class="section__individualTask"> ${task.content} </span>
-                </div>
-
-                <div class="section_taskRowRight">
                     <button class="js-remove section__remove">
                         <img class="section__iconRemove" src="img/remove.png" alt="Remove Icon">
                     </button>
-                </div>
+                
             </li>
             `;
         }
