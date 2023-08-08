@@ -142,3 +142,15 @@ body {
         margin: 10%;
     }
 }
+
+.section__toggleTasksDone {
+background-color: none;
+border: none;
+color: teal;
+}
+
+.section__allDoneButton {
+    background-color: none;
+    border: none;
+    color: teal;
+}
