@@ -41,6 +41,7 @@ body {
     padding: 20px;
     margin-bottom: 2px;
     background-color: white;
+    margin-top: 2px;
 }
 
 .section__form {
@@ -121,10 +122,29 @@ body {
 
     .section__button {
         max-width: 100%;
+        transition: background-color 0.3s, transform 0.3s;
     }
 
     .container {
         margin: 10%;
+    }
+
+    .section__titleAndToggleButtons {
+        flex-direction: column;
+    }
+    .js-buttonsTaskList {
+        display:flex;
+        flex-direction: column;
+        margin-right: 1px;
+    }
+    .section__toggleTasksDone {
+        padding: 10px;
+        margin: 0;
+    }
+
+    .section__allDoneButton {
+        padding: 10px;
+        margin: 0;
     }
 }
 
@@ -144,13 +164,95 @@ body {
 }
 
 .section__toggleTasksDone {
-background-color: none;
+background-color: white;
 border: none;
 color: teal;
+transition: 1s;
 }
 
+.section__toggleTasksDone:hover {
+    color: rgb(0, 193, 193);
+} 
+
 .section__allDoneButton {
-    background-color: none;
+    background-color: white;
     border: none;
     color: teal;
+    transition: 1s;
+}
+
+.section__allDoneButton:hover {
+    color: rgb(0, 193, 193);
+} 
+
+.section__hiddenItem {
+    display: none;
+  }
+
+  .section__titleAndToggleButtons {
+    background-color: white;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  .section__toggleButtons {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 2px;
+    margin-right: 10px;
+    background-color: white;
+  }
+
+  .js-buttonsTaskList {
+    margin-right: 20px;
+  }
+
+  .section__done {
+    background-color: darkgreen;
+    color: white;
+    margin:2px;
+    width: 30px;
+    height: 30px;
+    transition: 1s;
+  }
+
+  .section__remove {
+    background-color: red;
+    color: white;
+    margin:2px;
+    width: 30px;
+    height: 30px;
+    transition: 1s;
+  }
+
+  .section__lineThrough{
+    text-decoration: line-through;
+  }
+
+  .section__done:hover {
+    background-color: rgb(0, 182, 0);
+  }
+
+  .section__remove:hover {
+    background-color: rgb(255, 108, 108);
+  }
+
+  button:disabled {
+    color: gray;
+    cursor: not-allowed;
+
+}
+button:disabled:hover {
+    color: gray;
+    cursor: not-allowed;
+
+}
+
+.section__button:hover {
+    transform: scale(1.05);
+    background-color: rgb(17, 174, 174);
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }

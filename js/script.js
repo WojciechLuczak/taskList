@@ -1,14 +1,12 @@
 {
-   //jesli lista zadan jest pusta - przyciski nie pokazuja sie
-   //jesli wszystkie zadania sa ukonczone - przycisk do ukonczenia wszystkich jest wyłączony
     let tasks = [];
     let hideDoneTasks = false;
+    let allAreDone = false;
 
     const toggleHidingDoneTasks = () => {
         hideDoneTasks = !hideDoneTasks;
         render(); 
     };
-    // funkcja do przełączania powyższego bool z false na true i odwrotnie      TO DO!!
 
     const focus = () => {
         const submitButton = document.querySelector(".section__button");
@@ -23,25 +21,33 @@
             ...tasks,
             {content: newTaskContent }
         ];
-        
         render();
     }
     const removeTask = (taskIndex) => {
-        //tasks.splice(taskIndex, 1);
+
         const newTasks = [...tasks.slice(0, taskIndex), ...tasks.slice(taskIndex + 1)];
         tasks = newTasks;
-
         render();
     }
     const toggleTaskDone = (taskIndex) => {
-       // tasks = tasks.map     TO DO
+
        const newTasks = tasks.map((task, index) =>
         index === taskIndex ? { ...task, done: !task.done } : task
         );
         tasks = newTasks;
-
-        //tasks[taskIndex].done = !tasks[taskIndex].done;
         render();
+    }
+
+    const checkIfAllAreDone = () => {
+        if (tasks.length > 0) {
+            const allTasksAreDone = tasks.every(task => task.done === true);
+            if (allTasksAreDone) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false; 
     }
 
     const toggleAllTasksDone = () => {
@@ -53,34 +59,7 @@
         tasks = newTasks;
         render();
     }; 
-
-
-    const hideAllTasksDone = () => {
-        console.log("ukrywam zrobione");
-     
-        let htmlString = "";
-        for (const task of tasks) {
-            if(task.done===false){
-                htmlString += `
-            <li class="section__taskRow js-itemHidden" ${task.done ? " style=\"text-decoration: line-through\"" : ""} >    
-                
-                    <button class="js-done section__done">
-                        <img class="section__iconCheck" src="${task.done ? 'img/checked.png' : 'img/unchecked.png'}" alt="Done Icon">
-                    </button>
-                    <span class="section__individualTask"> ${task.content} </span>
-                    <button class="js-remove section__remove">
-                        <img class="section__iconRemove" src="img/remove.png" alt="Remove Icon">
-                    </button>
-            </li>
-            `;
-            }
-            
-        }
-        document.querySelector(".js-tasks").innerHTML = htmlString;
-        toggleHidingDoneTasks;
-        bindEvents();
-
-    };
+    
 
     const bindEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
@@ -96,20 +75,18 @@
             })
         })
     }
-//              W li dodalem klase js-itemHidden do ukrywania przyciskow w CSS przez .js-itemHidden {display: none};
-//              wyłączonemu przyciskowi dodajemy atrybut disabled, a nie jakies ukrywajace klasy - w funkcji renderującej przyciski
     const renderTasks = () => {
         let htmlString = "";
         for (const task of tasks) {
             htmlString += `
-            <li class="section__taskRow js-itemHidden" ${task.done ? " style=\"text-decoration: line-through\"" : ""} >    
+            <li class="${hideDoneTasks===true&&task.done ? "section__hiddenItem " : ""}section__taskRow ">    
                 
                     <button class="js-done section__done">
-                        <img class="section__iconCheck" src="${task.done ? 'img/checked.png' : 'img/unchecked.png'}" alt="Done Icon">
+                    ${task.done ? "✔" : ""}
                     </button>
-                    <span class="section__individualTask"> ${task.content} </span>
+                    <span class="section__individualTask ${task.done ? " section__lineThrough" : ""} "> ${task.content} </span>
                     <button class="js-remove section__remove">
-                        <img class="section__iconRemove" src="img/remove.png" alt="Remove Icon">
+                    🗑
                     </button>
             </li>
             `;
@@ -123,16 +100,20 @@
 
         if (tasks.length > 0) {
             const htmlString = `
-            <button class="section__toggleTasksDone">${hideDoneTasks ? 'Pokaż ukończone' : 'Ukryj ukończone'}</button>
-            <button class="section__allDoneButton">Ukończ wszystkie</button>
+            
+            <button class="section__toggleTasksDone ">${hideDoneTasks ? 'Pokaż ukończone' : 'Ukryj ukończone'}</button>
+            <button class="section__allDoneButton" ${checkIfAllAreDone() ? '' : 'disabled'}>Ukończ wszystkie</button>
             `;
             buttonsTaskList.innerHTML = htmlString;    
             bindButtonsEvents();
-        } else {
-        buttonsTaskList.innerHTML = ''; // Clear the buttons if no tasks
+        } 
+        
+        else {
+        buttonsTaskList.innerHTML = ''; 
         }
     };
 
+    
     const bindButtonsEvents = () => {
         const allDoneButton = document.querySelector(".section__allDoneButton");
         allDoneButton.addEventListener("click", () => {
@@ -141,7 +122,7 @@
 
         const hideAllDone = document.querySelector(".section__toggleTasksDone");
         hideAllDone.addEventListener("click", () => {
-            hideAllTasksDone();
+            toggleHidingDoneTasks();
         });
        
     };
@@ -149,7 +130,7 @@
     const render = () => {
         renderTasks();
         renderButtons();
-
+        console.log(checkIfAllAreDone());
         //bindRemoveEvents();
         //bindToggleEvents();
         //bindButtonsEvents();
